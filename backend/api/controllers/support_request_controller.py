@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from api.dtos.support_request import SupportRequestDto
 from notifiers.channels.slack.support_requests import send_slack_message
@@ -23,7 +23,7 @@ async def support_request(dto: SupportRequestDto):
     if success:
       return { 'response': message }
     else:
-      return { 'response': f'Error: {message}' }
+      raise HTTPException(status_code=400, detail=message)
     
   if channel == Channel.SLACK:
     send_slack_message()
