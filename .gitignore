@@ -23,6 +23,11 @@ frontend/.env*
 # Ignore Bundler config
 backend/venv/
 
+# Ignore deploy files
+backend/.dockerignore
+backend/Dockerfile
+backend/fly.toml
+
 # Ignore all environment files (except templates)
 backend/.env*
 
